@@ -26,7 +26,7 @@ async function findUser(nome, senha) {
 
 async function updateTaskUser(nome, senha, tasks) {
   const db = await connection();
-  await db.updateOne(
+  await db.collection('task').updateOne(
     { 
       $and: 
         [
