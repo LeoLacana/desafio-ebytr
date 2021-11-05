@@ -1,15 +1,34 @@
-const { getTaks } = require('../model/modelTask');
+const { registerUser, findUser, updateTaskUser } = require('../model/modelTask');
 
-const getTasks = async () => {
+const setUser = async (nome, senha, role) => {
   try {
-    const task = await getTaks();
-    console.log(task);
-    return task;
+    await registerUser(nome, senha, role);
   } catch {
-    return { message: "Algo deu errado!"}
+    return { message: "Erro ao cadrastar, tente novamente" }
   };
 };
 
+const getUser = async (nome, senha) => {
+  try {
+    console.log('3');
+    const user = await findUser(nome, senha);
+    return user;
+  } catch {
+    return { message: 'Erro ao encontrar usuario, tente novamente' }
+  }
+}
+
+const atualizationTaskUser = async (nome, senha, tasks) => {
+  try {
+    await updateTaskUser(nome, senha, tasks);
+    return { message: "Opa" }
+  } catch {
+    return { message: 'Erro na atualização' }
+  }
+}
+
 module.exports = {
-  getTasks,
+  setUser,
+  getUser,
+  atualizationTaskUser,
 }
