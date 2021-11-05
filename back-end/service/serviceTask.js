@@ -21,7 +21,7 @@ const getUser = async (nome, senha) => {
 const atualizationTaskUser = async (nome, senha, tasks) => {
   try {
     await updateTaskUser(nome, senha, tasks);
-    return { message: "Opa" }
+    return { message: "Atualização feita com sucesso!" }
   } catch {
     return { message: 'Erro na atualização' }
   }
